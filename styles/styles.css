@@ -13,7 +13,7 @@ body {
   height: 100%;
   display: flex;
   justify-content: center;
-  background-color: black;
+  background-color: #02021a;
 }
 #root {
   height:100%;
@@ -150,6 +150,15 @@ li > a:hover {
   font-size: 60px;
 }
 
+.home-page-container canvas {
+  cursor: grab;
+}
+
+.home-page-container canvas:active {
+  cursor: grabbing;
+}
+
+
 .info-card-container {
   min-width: 900px;
   width: 1150px;
@@ -235,6 +244,14 @@ li > a:hover {
   visibility: visible;
 }
 
+.landing-page canvas {
+  cursor: grab;
+}
+
+.landing-page canvas:active {
+  cursor: grabbing;
+}
+
 @media screen and (max-width: 1000px) {
   .nav-bar-container {
     min-width: 800px;
@@ -259,11 +276,21 @@ li > a:hover {
     font-size: 100px;
     height: 200px;
     width: 500px;
+    cursor: pointer;
   }
 
   .landing-page canvas {
     margin-left: 20%;
     margin-top: 20%;
+  }
+
+  .nav-bar-container > ul {
+    height: 100px;
+    align-items: center;
+  }
+
+  .home-page-container > h3 {
+    left: 10px;
   }
 
 
