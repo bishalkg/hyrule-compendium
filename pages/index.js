@@ -1,8 +1,11 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import { useRouter } from 'next/router'
 
 export default function Home() {
+  const router = useRouter()
+
   return (
     <div className={styles.container}>
       <Head>
@@ -49,6 +52,7 @@ export default function Home() {
               Instantly deploy your Next.js site to a public URL with Vercel.
             </p>
           </a>
+          <button onClick={() => router.push('/about')}>Go to About</button>
         </div>
       </main>
 

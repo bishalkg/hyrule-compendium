@@ -1,0 +1,235 @@
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  src: url(../public/assets/fonts/BOTWFont.ttf);
+  font-family: zelda;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: black;
+}
+#root {
+  height:100%;
+  width: 100%;
+  background-color:#030314;
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  font-family: 'zelda';
+  position: absolute;
+  color: #1db95478;
+  text-shadow: -3px 2px rgba(14, 36, 2, 0.897);
+  font-size: 75px;
+  z-index: 100;
+}
+
+.landing-page {
+  width: 1200px;
+  min-width: 800px;
+  height: 1000px;
+  display: flex;
+  justify-content: center;
+  background-color:#030314;
+}
+
+
+.enter-button-container {
+  position: absolute;
+	bottom: 18%;
+  width: 300px;
+  height: 80px;
+}
+
+.enter-button {
+  cursor: pointer;
+  position: absolute;
+  font-size: 50px;
+  font-family: 'zelda';
+  width: 300px;
+  height: 80px;
+  color:#9ea59d;
+	z-index: 100;
+  border-radius: 35px;
+  background-color: #1db95478;
+  transition: all 0.3s;
+  border: none;
+  box-shadow: inset 0px 0px 5px #c1c1c1;
+}
+
+.enter-button:hover {
+  width: 312px;
+  height: 83px;
+  font-size: 53px;
+  background-color: #26d56378;
+}
+
+.nav-bar-container {
+  width: 1200px;
+  background-color: #070766;
+  padding: 10px;
+}
+
+.nav-bar-container > ul {
+  display: flex;
+  gap: 20px;
+  list-style-type: none;
+  height: 40px;
+  justify-content: space-evenly;
+  align-content: center;
+
+  transition: font-size 0.5s;
+}
+
+li > a:visited {
+  text-decoration: none;
+  color: #9ea59d;
+}
+
+li > a {
+  font-size: 170%;
+  font-family: zelda;
+  color: white;
+}
+
+li > a:hover {
+  font-size: 180%;
+}
+
+.monsters-page-container {
+  background-image: url('../public/assets/dark_logo.png');
+  background-attachment: fixed;
+  /* background-position-x: 200px; */
+  background-position-y: 120px;
+  /* background-position: center; */
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* height: 100%; */
+  display: flex;
+  flex-direction: column;
+}
+
+.home-page-container {
+  height: 100%;
+}
+
+.home-page-container > h3 {
+  color: #d7d211;
+  font-size: 50px;
+  font-family: zelda;
+  width: 1200px;
+  min-width: 800px;
+  z-index: 100;
+  position: absolute;
+  text-align: center;
+}
+
+.home-page-container #em-listen {
+  color: #d7d211;
+}
+
+.home-page-container #em-ganon {
+  color: #9c1257;
+  text-decoration: overline #9c1257;
+}
+
+.home-page-container #em-persist {
+  color: #9c1257;
+}
+
+.home-page-container #em-final-words {
+  text-decoration: underline overline #9c1257;
+  font-size: 60px;
+}
+
+.info-card-container {
+  min-width: 900px;
+  width: 1150px;
+  max-width: 1200px;
+  border-radius: 15px;
+  color: #9ea59d;
+  height: 650px;
+  min-height: 600px;
+  background-color:#070766f7;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin: 8px;
+}
+
+.details-container {
+  max-width: 60%;
+  list-style-type: none;
+  font-size: 25px;
+  font-family: zelda;
+  display: flex;
+}
+.info-flex {
+  padding: 50px;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#monster-name {
+  font-size: 80px;
+  color: #9c1257;
+}
+
+#info-heading {
+  font-size: 33px;
+  color: #d7d211;
+
+}
+
+.search-bar {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  gap:1px;
+  margin: 10px;
+
+}
+
+.search-bar > input, .search-bar > button {
+  height: 50px;
+  font-size: xx-large;
+  font-family: zelda;
+  border-radius: 5px;
+}
+
+.search-bar > input {
+  width: 350px;
+}
+
+.search-bar > button {
+  width: 150px;
+  font-size: x-large;
+  cursor: pointer;
+  color: #9c1257;
+  background-color: #07076694;
+
+}
+
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(40vh);
+  visibility: hidden;
+  transition: opacity 500ms ease-out, transform 400ms ease-out,
+    visibility 1000ms ease-out;
+  will-change: opacity, transform, visibility;
+}
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+}
