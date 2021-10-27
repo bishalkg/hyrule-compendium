@@ -164,6 +164,7 @@ li > a:hover {
   justify-content: center;
   flex-wrap: wrap;
   flex-direction: column;
+  align-content: center;
   margin: 8px;
 }
 
@@ -232,4 +233,38 @@ li > a:hover {
   opacity: 1;
   transform: none;
   visibility: visible;
+}
+
+@media screen and (max-width: 1000px) {
+  .nav-bar-container {
+    min-width: 800px;
+    margin-left: 40px;
+    background-color: #070766;
+    padding: 10px;
+  }
+
+  .nav-bar-container > ul {
+    justify-content: flex-end;
+  }
+
+  .title {
+    left: 25%;
+    font-size: 150px;
+  }
+
+  .enter-button {
+    left: 50%;
+    top: 500px;
+    border-radius: 87px;
+    font-size: 100px;
+    height: 200px;
+    width: 500px;
+  }
+
+  .landing-page canvas {
+    margin-left: 20%;
+    margin-top: 20%;
+  }
+
+
 }
