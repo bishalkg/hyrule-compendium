@@ -1,10 +1,9 @@
 import React, { useEffect, useState, Suspense } from 'react';
 import axios from 'axios';
-import { NavBar } from '../components/NavBar.jsx';
 import { MonsterList } from './MonsterList.jsx';
 import { SearchBar } from '../components/SearchBar.jsx';
 
-export const Monsters = props => {
+export default function Monsters(props) {
   const [monsters, setMonsters] = useState('');
   const [filteredMonsters, setFilteredMonsters] = useState(monsters);
   const [isFetching, setIsFetching] = useState(true);
@@ -54,7 +53,6 @@ export const Monsters = props => {
 
   return (
       <div className="monsters-page-container">
-        <NavBar />
         <SearchBar currCategory={'Monsters'} filterList={filterList} displayButton={false}/>
         <MonsterList isFetching={isFetching} monsters={filteredMonsters}/>
       </div>

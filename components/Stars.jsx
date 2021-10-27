@@ -4,7 +4,7 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import * as THREE from 'three';
 
 
-export default (props) => {
+export default function Embers(props)  {
   const ref = useRef();
   const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(100));
   useFrame((state, delta) => {
@@ -21,3 +21,4 @@ export default (props) => {
     </mesh>
   )
 }
+

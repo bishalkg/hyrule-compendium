@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { NavBar } from '../components/NavBar.jsx';
 import { CreatureList } from './CreatureList.jsx';
 import { MonsterList } from './MonsterList.jsx';
 import { SearchBar } from '../components/SearchBar.jsx';
 
-export const Creatures = props => {
+export default function Creatures(props) {
   const [creaturesFood, setCreaturesFood] = useState('');
   const [creaturesNonFood, setCreaturesNonFood] = useState('');
   const [isFetching, setIsFetching] = useState(true);
@@ -99,7 +98,6 @@ export const Creatures = props => {
 
   return (
     <div className="creatures-page-container">
-      <NavBar />
       <SearchBar
         currCategory={currCategory === 'food' ? 'food' : 'non-food'}
         otherCategory={currCategory === 'food' ? 'non-food' : 'food'}
