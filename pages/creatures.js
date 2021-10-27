@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { CreatureList } from './CreatureList.jsx';
-import { MonsterList } from './MonsterList.jsx';
+import { CreatureList } from '../components/CreatureList.jsx';
+import { MonsterList } from '../components/MonsterList.jsx';
 import { SearchBar } from '../components/SearchBar.jsx';
 
-export default function Creatures(props) {
+export default function Creatures({data}) {
   const [creaturesFood, setCreaturesFood] = useState('');
   const [creaturesNonFood, setCreaturesNonFood] = useState('');
-  const [isFetching, setIsFetching] = useState(true);
   const [currCategory, setCurrCategory] = useState('food');
 
   const [filteredCreaturesFood, setFilteredCreaturesFood] = useState(creaturesFood);
@@ -16,16 +15,11 @@ export default function Creatures(props) {
 
 
   useEffect(() => {
-    axios.get('https://botw-compendium.herokuapp.com/api/v2/category/creatures')
-      .then(({data}) => {
-        setCreaturesFood(data.data.food);
-        setCreaturesNonFood(data.data.non_food);
-        setFilteredCreaturesFood(data.data.food);
-        setFilteredCreaturesNonFood(data.data.non_food);
-        setIsFetching(false);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+    setCreaturesFood(data.data.food);
+    setCreaturesNonFood(data.data.non_food);
+    setFilteredCreaturesFood(data.data.food);
+    setFilteredCreaturesNonFood(data.data.non_food);
+  }, [data]);
 
   const filterList = (searchQuery) => {
     // set the reference of creatures to filter
@@ -40,7 +34,7 @@ export default function Creatures(props) {
       return setFilteredCreaturesNonFood(creaturesNonFood);
     }
 
-    console.log(currCategory, 'filterList');
+    // console.log(currCategory, 'filterList');
     //filterFoodCreatures and filterNonFoodCreatures Separately
     if (currCategory === 'food') {
       const filterCreatures = currCreatures.filter((creature) => {
@@ -105,8 +99,23 @@ export default function Creatures(props) {
         filterList={filterList}
         displayButton={true}
       />
-      {currCategory === 'food' ? (<CreatureList creatures={filteredCreaturesFood} isFetching={isFetching} />) : (<MonsterList monsters={filteredCreaturesNonFood} isFetching={isFetching} />)}
+      {currCategory === 'food' ? (<CreatureList creatures={filteredCreaturesFood} />) : (<MonsterList monsters={filteredCreaturesNonFood} />)}
 
     </div>
   );
 };
+
+
+export async function getStaticProps() {
+  try {
+    const { data } = await axios.get('https://botw-compendium.herokuapp.com/api/v2/category/creatures')
+    return {
+      props: {
+        data,
+      }
+    }
+  } catch(e) {
+    console.log(e, 'error fetching creatures')
+  }
+
+}

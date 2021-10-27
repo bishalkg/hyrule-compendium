@@ -1,22 +1,16 @@
 import React, { useEffect, useState, Suspense } from 'react';
 import axios from 'axios';
-import { MonsterList } from './MonsterList.jsx';
+import { MonsterList } from '../components/MonsterList.jsx';
 import { SearchBar } from '../components/SearchBar.jsx';
 
-export default function Monsters(props) {
+export default function Monsters({data}) {
   const [monsters, setMonsters] = useState('');
   const [filteredMonsters, setFilteredMonsters] = useState(monsters);
-  const [isFetching, setIsFetching] = useState(true);
 
   useEffect(() => {
-    axios.get('https://botw-compendium.herokuapp.com/api/v2/category/monsters')
-      .then(({data}) => {
-        setMonsters(data.data);
-        setFilteredMonsters(data.data)
-        setIsFetching(false);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+      setMonsters(data.data);
+      setFilteredMonsters(data.data)
+  }, [data]);
 
   const filterList = (searchQuery) => {
     // console.log(searchQuery, 'in filterList')
@@ -54,8 +48,23 @@ export default function Monsters(props) {
   return (
       <div className="monsters-page-container">
         <SearchBar currCategory={'Monsters'} filterList={filterList} displayButton={false}/>
-        <MonsterList isFetching={isFetching} monsters={filteredMonsters}/>
+        <MonsterList monsters={filteredMonsters}/>
       </div>
 
   );
 };
+
+export async function getStaticProps() {
+
+  try {
+    const { data } = await axios.get('https://botw-compendium.herokuapp.com/api/v2/category/monsters');
+    return {
+      props: {
+        data,
+      }
+    }
+  } catch(e) {
+    console.log(e, 'error fetching monsters')
+  }
+
+}
