@@ -11,7 +11,6 @@ export default function Materials({data}) {
   useEffect(() => {
     setMaterials(data.data);
     setFilteredMaterials(data.data);
-    console.log(data.data[0])
   }, [data])
 
   const filterList = (searchQuery) => {
@@ -20,7 +19,6 @@ export default function Materials({data}) {
     }
 
     const filteredmaterials = materials.filter((materials) => {
-      console.log(typeof materials.hearts_recovered, searchQuery);
       if (materials.name.includes(searchQuery)
       || materials.description.includes(searchQuery)
       || materials.common_locations.includes(searchQuery)
