@@ -3,13 +3,16 @@ import { FadeInSection } from './FadeInSection.jsx';
 import Image from 'next/image';
 
 
-export const InfoCard = ({monster, creature, children}) => {
+export const InfoCard = ({monster, creature, equipment, children}) => {
   let image = '';
-  if (!creature) {
+  if (monster) {
     image = monster.image;
-  } else {
+  } else if (creature) {
     image = creature.image;
+  } else if (equipment) {
+    image = equipment.image;
   }
+
   return (
       <FadeInSection className="info-card-container">
         <div className="info-card-container">
