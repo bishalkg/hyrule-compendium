@@ -40,7 +40,6 @@ export default function Monsters({data}) {
     });
     //not filtering by all fields correctly! .includes doesnt look into arrays the same as it does for a string i think
     // console.log(filteredMonsters);
-
     return setFilteredMonsters(filterMonsters);
   }
 
@@ -55,7 +54,6 @@ export default function Monsters({data}) {
 };
 
 export async function getStaticProps() {
-
   try {
     const { data } = await axios.get('https://botw-compendium.herokuapp.com/api/v2/category/monsters');
     return {
@@ -64,7 +62,6 @@ export async function getStaticProps() {
       }
     }
   } catch(e) {
-    console.log(e, 'error fetching monsters')
+    console.log(e, 'error fetching monsters');
   }
-
 }
